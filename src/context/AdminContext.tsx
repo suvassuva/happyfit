@@ -11,6 +11,7 @@ export interface AdminStudent {
   status: "Active" | "Inactive";
   joinDate: string;
   avatar: string;
+  dueDate?: string;
 }
 
 export interface AdminCourse {
@@ -81,14 +82,14 @@ const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
 // ─── Seed Data ───────────────────────────────────────────────────────
 const seedStudents: AdminStudent[] = [
-  { id: "s1", name: "Emma Knight", email: "emma.k@happyfit.com", plan: "Premium", status: "Active", joinDate: "Jan 15, 2026", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s2", name: "Leo Miller", email: "leo.m@happyfit.com", plan: "Premium", status: "Active", joinDate: "Feb 3, 2026", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s3", name: "Sophia Chen", email: "sophia.c@happyfit.com", plan: "Basic", status: "Active", joinDate: "Mar 22, 2026", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s4", name: "James Park", email: "james.p@happyfit.com", plan: "Trial", status: "Active", joinDate: "Apr 10, 2026", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s5", name: "Mia Rodriguez", email: "mia.r@happyfit.com", plan: "Premium", status: "Active", joinDate: "Apr 28, 2026", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s6", name: "Noah Williams", email: "noah.w@happyfit.com", plan: "Basic", status: "Inactive", joinDate: "Dec 5, 2025", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s7", name: "Ava Thompson", email: "ava.t@happyfit.com", plan: "Premium", status: "Active", joinDate: "May 1, 2026", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&h=256&auto=format&fit=crop" },
-  { id: "s8", name: "Ethan Davis", email: "ethan.d@happyfit.com", plan: "Trial", status: "Active", joinDate: "May 12, 2026", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=256&h=256&auto=format&fit=crop" },
+  { id: "s1", name: "Emma Knight", email: "emma.k@happyfit.com", plan: "Premium", status: "Active", joinDate: "Jan 15, 2026", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-05-24" },
+  { id: "s2", name: "Leo Miller", email: "leo.m@happyfit.com", plan: "Premium", status: "Active", joinDate: "Feb 3, 2026", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-06-12" },
+  { id: "s3", name: "Sophia Chen", email: "sophia.c@happyfit.com", plan: "Basic", status: "Active", joinDate: "Mar 22, 2026", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-05-18" },
+  { id: "s4", name: "James Park", email: "james.p@happyfit.com", plan: "Trial", status: "Active", joinDate: "Apr 10, 2026", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-05-28" },
+  { id: "s5", name: "Mia Rodriguez", email: "mia.r@happyfit.com", plan: "Premium", status: "Active", joinDate: "Apr 28, 2026", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-06-28" },
+  { id: "s6", name: "Noah Williams", email: "noah.w@happyfit.com", plan: "Basic", status: "Inactive", joinDate: "Dec 5, 2025", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2025-12-05" },
+  { id: "s7", name: "Ava Thompson", email: "ava.t@happyfit.com", plan: "Premium", status: "Active", joinDate: "May 1, 2026", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-06-01" },
+  { id: "s8", name: "Ethan Davis", email: "ethan.d@happyfit.com", plan: "Trial", status: "Active", joinDate: "May 12, 2026", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=256&h=256&auto=format&fit=crop", dueDate: "2026-05-19" },
 ];
 
 const seedCourses: AdminCourse[] = [
@@ -155,7 +156,13 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // ─── Students CRUD ──────────────────────────────────────────────
   const addStudent = (s: Omit<AdminStudent, "id">) => {
-    const next = [{ ...s, id: "s" + Date.now() }, ...students];
+    let dueDate = s.dueDate;
+    if (!dueDate) {
+      const d = new Date();
+      d.setDate(d.getDate() + (s.plan === "Trial" ? 14 : 30));
+      dueDate = d.toISOString().split("T")[0];
+    }
+    const next = [{ ...s, id: "s" + Date.now(), dueDate }, ...students];
     setStudents(next); save("hf_admin_students", next);
     addNotification(`👤 Student "${s.name}" added successfully!`);
   };

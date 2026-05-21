@@ -6,6 +6,26 @@ import { useAdmin } from "@/context/AdminContext";
 export default function AdminPage() {
   const { students, courses, bookings, events, updateBookingStatus } = useAdmin();
 
+  // Billing Alert check utility (simulated date: May 21, 2026)
+  const getBillingAlerts = () => {
+    const today = new Date("2026-05-21");
+    today.setHours(0, 0, 0, 0);
+
+    return students
+      .filter((s) => s.status === "Active" && s.dueDate)
+      .map((s) => {
+        const due = new Date(s.dueDate!);
+        due.setHours(0, 0, 0, 0);
+        const diffTime = due.getTime() - today.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return { student: s, diffDays };
+      })
+      .filter((item) => item.diffDays <= 5) // overdue or due within 5 days
+      .sort((a, b) => a.diffDays - b.diffDays);
+  };
+
+  const billingAlerts = getBillingAlerts();
+
   // Live computed stats from context
   const totalStudents = students.length;
   const activeStudents = students.filter((s) => s.status === "Active").length;
@@ -194,6 +214,63 @@ export default function AdminPage() {
               ))}
             </div>
           </div>
+
+          {/* Billing & Expiry Alerts Mini-Widget */}
+          <div className="glass-card rounded-xl p-4">
+            <div className="flex justify-between items-center mb-3">
+              <h4 className="font-headline-md text-[14px] font-bold flex items-center gap-1.5 text-on-surface">
+                <span className="material-symbols-outlined text-[18px] text-error">warning</span>
+                Billing Alerts
+              </h4>
+              {billingAlerts.length > 0 && (
+                <span className="text-[9px] bg-error/10 text-error px-2 py-0.5 rounded-full font-bold">
+                  {billingAlerts.length} Action
+                </span>
+              )}
+            </div>
+            <div className="space-y-2.5">
+              {billingAlerts.length === 0 ? (
+                <div className="text-center py-6 text-on-surface-variant text-[11px] flex flex-col items-center gap-1">
+                  <span className="material-symbols-outlined text-green-600 text-[18px]">check_circle</span>
+                  <span>All accounts are in good standing!</span>
+                </div>
+              ) : (
+                billingAlerts.slice(0, 3).map(({ student: s, diffDays }) => {
+                  const isOverdue = diffDays < 0;
+                  return (
+                    <div key={s.id} className="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-all">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={s.avatar} alt={s.name} className="w-7 h-7 rounded-full border shadow-xs flex-shrink-0" />
+                        <div className="min-w-0">
+                          <p className="font-label-md text-[11px] font-bold text-on-surface truncate">{s.name}</p>
+                          <span className={`inline-block text-[8px] font-bold px-1.5 py-0.2 rounded-full border mt-0.5 ${
+                            isOverdue 
+                              ? "bg-red-50 text-red-700 border-red-200" 
+                              : "bg-amber-50 text-amber-700 border-amber-200"
+                          }`}>
+                            {isOverdue ? `Overdue ${Math.abs(diffDays)}d` : `Due in ${diffDays}d`}
+                          </span>
+                        </div>
+                      </div>
+                      <Link 
+                        href={`/admin/users?emailAction=${s.id}&template=${isOverdue ? "overdue" : "expiry"}`}
+                        className={`p-1.5 rounded-lg border transition-colors flex items-center justify-center ${
+                          isOverdue 
+                            ? "border-red-200 text-red-600 hover:bg-red-50" 
+                            : "border-amber-200 text-amber-600 hover:bg-amber-50"
+                        }`}
+                        title="Send Alert Email"
+                      >
+                        <span className="material-symbols-outlined text-[16px]">mail</span>
+                      </Link>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </div>
+
         </div>
 
         {/* Recent Bookings Table */}
