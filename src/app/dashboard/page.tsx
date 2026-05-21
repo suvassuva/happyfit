@@ -2,13 +2,8 @@
 
 import Link from "next/link";
 import { useDashboard } from "@/context/DashboardContext";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function DashboardPage() {
-  const { user, isLoading } = useAuth();
-  const router = useRouter();
   const {
     profile,
     classes,
@@ -18,20 +13,6 @@ export default function DashboardPage() {
     toggleReminder,
     incrementGoal,
   } = useDashboard();
-
-  useEffect(() => {
-    if (!isLoading && !user) {
-      router.push("/login");
-    }
-  }, [user, isLoading, router]);
-
-  if (isLoading || !user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
 
   // Slice the first 3 classes as the "Upcoming Classes" display on Overview
   const featuredClasses = classes.slice(0, 3);

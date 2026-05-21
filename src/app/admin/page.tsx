@@ -2,29 +2,9 @@
 
 import Link from "next/link";
 import { useAdmin } from "@/context/AdminContext";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function AdminPage() {
-  const { user, isLoading } = useAuth();
-  const router = useRouter();
   const { students, courses, bookings, events, updateBookingStatus } = useAdmin();
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!user) router.push("/login");
-      else if (user.role !== "admin") router.push("/dashboard");
-    }
-  }, [user, isLoading, router]);
-
-  if (isLoading || !user || user.role !== "admin") {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
 
   // Live computed stats from context
   const totalStudents = students.length;

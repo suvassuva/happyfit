@@ -27,7 +27,7 @@ export interface ClassItem {
   status: "Live Now" | "Scheduled" | "Completed" | "Full";
   category: "Hatha" | "Vinyasa" | "Meditation" | "Kids" | "Restorative";
   duration: string;
-  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  difficulty: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
   description: string;
   spotsLeft?: number;
 }
