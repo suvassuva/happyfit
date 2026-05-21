@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Happy Fit Club - Empowering the Next Generation through Yoga</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#dad7ff",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-container": "#a44100",
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary-fixed": "#ffdbcc",
+                    "primary-container": "#4f46e5",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed-dim": "#ffb0cd",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-dim": "#d8dadc",
+                    "outline": "#777587",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-surface": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "tertiary": "#7e3000",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary-fixed": "#351000",
+                    "outline-variant": "#c7c4d8",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-secondary-fixed": "#3e0022",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-tint": "#4d44e3",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#600037",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#8c0053",
+                    "on-surface-variant": "#464555",
+                    "secondary-fixed": "#ffd9e4",
+                    "on-error": "#ffffff",
+                    "background": "#f7f9fb",
+                    "secondary": "#b4136d",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#fd56a7",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#3525cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "1.5rem",
+                    "margin-mobile": "1rem",
+                    "stack-sm": "0.5rem",
+                    "section-padding": "5rem",
+                    "margin-desktop": "2.5rem",
+                    "stack-md": "1.5rem",
+                    "stack-lg": "3rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Outfit"],
+                    "body-md": ["Inter"],
+                    "headline-xl-mobile": ["Outfit"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-xl": ["Outfit"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, rgba(253, 86, 167, 0.05) 90%);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #fd56a7 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-sm docked full-width top-0 sticky z-50">
+<nav class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight">
+                Happy Fit Club
+            </div>
+<div class="hidden md:flex items-center space-x-stack-lg">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Programs</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 font-body-md text-body-md" href="#">Events</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200 font-body-md text-body-md" href="#">Trainers</a>
+</div>
+<button class="primary-gradient text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:shadow-lg transition-all active:scale-95">
+                Join Free Trial
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative hero-gradient overflow-hidden py-section-padding md:py-32">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center">
+<div class="space-y-stack-md relative z-10">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                        Wellness Redefined
+                    </div>
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface leading-tight">
+                        Empowering the <span class="text-transparent bg-clip-text primary-gradient">Next Generation</span> through Yoga
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Nurturing physical strength and emotional balance in children through playful movement, mindfulness, and certified guidance.
+                    </p>
+<div class="flex flex-wrap gap-stack-sm pt-4">
+<button class="primary-gradient text-on-primary font-label-md text-label-md px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-transform">
+                            Start Free Trial
+                        </button>
+<button class="border border-outline-variant text-on-surface font-label-md text-label-md px-8 py-4 rounded-full hover:bg-surface-container-low transition-colors">
+                            View Curriculum
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="relative aspect-square rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A group of diverse, joyful children are practicing yoga in a bright, airy studio with high ceilings and light wood floors. Warm sunlight streams through large windows, illuminating the scene with a soft, ethereal glow. The children are in a tree pose, smiling and looking focused, reflecting a peaceful yet playful mood. The aesthetic is clean and modern, featuring soft pastel tones of blue and pink that match the brand's premium wellness identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFG2eV6DvML23zdWOkvsbJVKPoUlM3x1Y-tRWcSVDMnxq8dVtsIUvxNmX3gpnDEiBY3ivbF292xAquJJv8rrxFYc486S7iAJxn5GJnsJt9_vXoCL28Esae5cQQix-0U9VDy08aJzkBIl_LKYdrqX_sqdTlNHTW_tI3xrc56bex3TF1L-65BeFCLG3BbU6M4LcpA1_-ONw4-sMgid8P74PY41qdn8aZmn8Ev11DQWWEdO5f5W-v94dgto9zG7kqcaV0Tvl293fmOx0"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-lg shadow-xl hidden md:block">
+<div class="flex items-center gap-4">
+<div class="bg-secondary-container p-3 rounded-full">
+<span class="material-symbols-outlined text-on-secondary" data-weight="fill">favorite</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">5,000+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Happy Students</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Programs Overview (Bento Grid Inspired) -->
+<section class="py-section-padding bg-surface">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-stack-sm">Explore Our Programs</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Discover tailored wellness journeys designed for every age group and activity level.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Kids Yoga -->
+<div class="md:col-span-8 group relative rounded-lg overflow-hidden h-[400px]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a young child sitting in a meditative lotus pose on a vibrant purple yoga mat. The background is a soft-focus garden with green foliage and dappled sunlight, creating a serene and natural setting. The lighting is high-key and optimistic, emphasizing the brand's focus on nurturing wellness. The overall image has a clean, high-end SaaS feel with soft shadows and breathable composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa9ZauOwyi8HdKzjtEUbTvxAjDhuIuZMNECwUMPPwAfDXCFL6v6eewl6on71xIIm_pVwfxW2VwmX_BZV1SBMIyx4ShoYfHff5swGoyGXoJ05i4bE6-O1oBrmZNmmaPCs2IVfOGChCzDi8iDPbRbcO1stEWltfCaHyb1vEFXUqAftA9xgPktM7xqwU-9yMGYUuzoykIm_qweFRadlTHtZ8-MkbsYDU1cJQoDyvU1fjUMY4H0XxCaWi3V0Q5bLhYip_RTiHWlQYS1xA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg text-white">
+<span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 inline-block">Popular</span>
+<h3 class="font-headline-lg text-headline-lg mb-2">Kids Yoga</h3>
+<p class="font-body-md text-body-md text-white/80 max-w-md">Interactive storytelling and movement to improve focus and flexibility.</p>
+</div>
+</div>
+<!-- Online Classes -->
+<div class="md:col-span-4 bg-primary-container rounded-lg p-stack-lg flex flex-col justify-between text-on-primary-container">
+<div>
+<div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">video_library</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Online Classes</h3>
+<p class="font-body-md text-body-md opacity-80">Stream live and recorded sessions from the comfort of your home.</p>
+</div>
+<a class="inline-flex items-center gap-2 font-label-md text-label-md hover:translate-x-1 transition-transform" href="#">
+                            Explore Library <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Adult Meditation -->
+<div class="md:col-span-4 group relative rounded-lg overflow-hidden h-[300px]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A peaceful adult woman sitting in a zen-like, minimalist white room with a single large Monstera plant. She is in deep meditation, eyes closed, reflecting calm and mental clarity. The lighting is diffused and soft, using cool blue tones and warm highlights to create a luxury wellness atmosphere. The composition is balanced and spacious, adhering to the brand's minimalist playful aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU-STOpCAqGGa6qnYF1CY75cQMXuo6s9IA5KQkdMaLYyJrN0NUuzV1IkiY9HhgSSwmHnkjGihW6CMyKZP6Guty7pNrhT2B8pYNoIH7MC07d7PqfTzlvisDJ72U8YDqbxTcnL0R0gP0t9NZZEwpUCA57DwWAlmy0IqUShtkiQwehd3w4lVx4WbDWS_ISiU7S52yrErogipAzxQvu5LUsSpGmmX6wRZ9xZbItyiV972cN1g41ElA8iGa7-z4LD5-BPiCG8qgzX8p_Jw"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center flex-col text-white p-6 text-center">
+<h3 class="font-headline-md text-headline-md mb-1">Adult Meditation</h3>
+<p class="font-caption text-caption uppercase tracking-widest">Mindfulness for Parents</p>
+</div>
+</div>
+<!-- More Programs -->
+<div class="md:col-span-8 bg-surface-container-low rounded-lg p-stack-lg flex items-center gap-stack-md border border-outline-variant/30">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Certified Curriculum</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Our programs are built on science-backed pediatric wellness frameworks.</p>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 group">
+                                Learn about our method <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+<div class="hidden sm:grid grid-cols-2 gap-4">
+<div class="w-24 h-24 bg-secondary-fixed/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-weight="fill">school</span>
+</div>
+<div class="w-24 h-24 bg-primary-fixed/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-weight="fill">shield</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us (Glassmorphism Section) -->
+<section class="py-section-padding relative overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="glass-card p-12 rounded-lg shadow-xl">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Why Families Trust Us</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">We combine modern pedagogy with traditional yoga principles to create a sanctuary for growth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-white shadow-md rounded-xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Expert Trainers</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Pediatric-certified instructors who specialize in making wellness fun and engaging.</p>
+</div>
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-white shadow-md rounded-xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">calendar_month</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Flexible Schedules</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Morning, after-school, and weekend sessions that fit into your busy family life.</p>
+</div>
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-white shadow-md rounded-xl flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Certified Curriculum</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Internationally recognized syllabus that ensures safety and holistic development.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-section-padding bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-end mb-stack-lg gap-4">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Hear from our Community</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real stories from parents who have seen their children thrive with Happy Fit Club.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-white transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="bg-secondary-fixed/20 p-stack-lg rounded-lg border border-secondary-fixed/30 flex flex-col justify-between">
+<div>
+<div class="flex text-secondary mb-4">
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic mb-8">"The change in Leo's concentration levels since starting the Kids Yoga program has been incredible. He's more calm and mindful every day."</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling mother in her late 30s, exuding warmth and friendliness. She has soft, natural lighting on her face, and the background is a blurred domestic setting with soft white and beige tones. The image is clean, high-resolution, and perfectly represents the discerning parent demographic of a high-end wellness club." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN9yuHJEMzZWbeRdgKt3SF5HWsKkLye9z5_skgLOCIKLnd9H1MCRGdcS1n_JTRISXCDyHDXw8EPgo59WuSEmaMxIIR6M10JM1gwW3XwMNJOuVrKIh-xckPxwztsfw9NAQf67ytNiZFX8Uhp-MMm30HhVjAdl6WFzjc-0bbIbMBvvxalFzGytR467r0KG8mMR0_PSLKQDccLBu1a51Vj8XGu8YweVwWamdYa5rAa-D3CTV-fpoPVjoTQiReOtLZ9NO_-MiOtGnIlPA"/>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface">Sarah Mitchell</h5>
+<p class="font-caption text-caption text-on-surface-variant">Parent of Leo, 7yrs</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-primary-fixed/20 p-stack-lg rounded-lg border border-primary-fixed/30 flex flex-col justify-between">
+<div>
+<div class="flex text-primary mb-4">
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic mb-8">"The online classes are a lifesaver. Being able to join from home during busy weekdays has made wellness a consistent part of our family routine."</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A friendly, approachable father in his 40s with a kind expression and a slight smile. He is dressed in a clean, casual linen shirt. The setting is bright and airy with soft window light, conveying a sense of premium quality and family-oriented reliability. The visual style aligns with modern minimalist SaaS photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTcIBTcSoEQtjGWWsXortP6_hK7R1aVrY8qHI1aEqHC4LeJk0HWYrjIK9xrQOhFM0a2K_-7yhkl_nB9g4dR2sqv3wFL7kNoNs2IZVILKLqrk-tq_qBAoJPtK47BN4EUfXQ-Z3g8MH7cGZcg_uJY6No3S8VO4IFQ7dTFiIpFJaMDj6uqUDWmO2b_JnRhZrWbejs8N_6giO5hyxg5FbRPG7yaINoZEXgbIoAAdvPmfdqmOtxLqQv6efxdKvZS-iZYx6PATwkbQCUQYY"/>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface">David Chen</h5>
+<p class="font-caption text-caption text-on-surface-variant">Parent of Maya, 10yrs</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-secondary-fixed/20 p-stack-lg rounded-lg border border-secondary-fixed/30 flex flex-col justify-between">
+<div>
+<div class="flex text-secondary mb-4">
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-weight="fill">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic mb-8">"Finding a space that welcomes both children and adults with such care is rare. We love the community events and the trainers' enthusiasm."</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A portrait of a thoughtful woman in her early 40s, with a gentle and warm smile. She is captured in a high-key, bright environment with soft focus greenery in the background. The lighting is flattering and optimistic, fitting for a brand that promotes nurturing and growth. The style is professional, airy, and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFa9GdUPgbEt0UHLDtnRuEeq9vQc8lXLVGhwbXE9IWYNMYb9xfEjzaqJDZah22JlGfVIFHV0upyTYX9PKGDvozCDclk7YswHuMkNXiWpGXMse9o8g5KMrHahXerzjwFDi2BYi2amvHmUnTO7P9yeTh4DP35HIkwWYspJVfqr1eqQd6BFPKyL6qw12ldvYE1Cv1vU45Czkh95LSF68Tt-9p_8ZvV6pYijeY5nCzJn9_a1VAXzrQpjYWK_uN_EnBHY9tf72BT-GfIKw"/>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface">Elena Rodriguez</h5>
+<p class="font-caption text-caption text-on-surface-variant">Parent of Sofia, 5yrs</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter CTA -->
+<section class="py-section-padding">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="primary-gradient rounded-lg p-stack-lg md:p-24 text-center text-on-primary relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<circle cx="10" cy="10" fill="white" r="20"></circle>
+<circle cx="90" cy="90" fill="white" r="30"></circle>
+</svg>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-6">
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl">Start Your Wellness Journey Today</h2>
+<p class="font-body-lg text-body-lg opacity-90">Join our newsletter to receive weekly yoga tips for kids, exclusive class schedules, and early access to events.</p>
+<form class="flex flex-col sm:flex-row gap-4 mt-8" onsubmit="return false;">
+<input class="flex-1 px-6 py-4 rounded-full bg-white/20 border border-white/40 placeholder:text-white/60 text-white focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm transition-all" placeholder="Enter your email address" type="email"/>
+<button class="bg-white text-primary font-label-md text-label-md px-10 py-4 rounded-full hover:shadow-2xl transition-all hover:scale-105 active:scale-95">
+                                Subscribe Now
+                            </button>
+</form>
+<p class="font-caption text-caption opacity-70">We respect your privacy. Unsubscribe at any time.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-section-padding max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">
+                    Happy Fit Club
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant">Nurturing wellness for every generation. A sanctuary for growth, balance, and joy.</p>
+</div>
+<div>
+<h6 class="font-label-md text-label-md text-on-surface font-bold mb-4 uppercase tracking-wider">Programs</h6>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Kids Yoga</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Adult Meditation</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Online Library</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-md text-label-md text-on-surface font-bold mb-4 uppercase tracking-wider">Company</h6>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Trainers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Branch Locations</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-md text-label-md text-on-surface font-bold mb-4 uppercase tracking-wider">Legal</h6>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 px-gutter py-8 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 Happy Fit Club. Nurturing wellness for every generation.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-all" href="#"><span class="material-symbols-outlined">podcasts</span></a>
+</div>
+</div>
+</footer>
+</body></html>
