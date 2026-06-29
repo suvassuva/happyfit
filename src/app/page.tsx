@@ -44,9 +44,9 @@ const TESTIMONIALS = [
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
-    "/images/hero_yoga.png",
-    "/images/little yogis.jpg",
-    "/images/kids3.jpg"
+    "https://images.unsplash.com/photo-1616699002805-0a21fc929981?w=800&q=80",
+    "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80",
+    "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800&q=80"
   ];
 
   useEffect(() => {
@@ -240,11 +240,11 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/kids.jpg"
+              src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80"
               alt="Kids practicing yoga together on mats"
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 40vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
 
@@ -312,7 +312,7 @@ export default function HomePage() {
             >
               <div className="program-image-container">
                 <Image
-                  src="/images/fit.jpg"
+                  src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
                   alt="Yoga Fit Class for Kids and Teens"
                   fill
                   className="object-cover"
@@ -342,7 +342,7 @@ export default function HomePage() {
             >
               <div className="program-image-container">
                 <Image
-                  src="/images/little yogis.jpg"
+                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80"
                   alt="Little Yogi's Club"
                   fill
                   className="object-cover"
@@ -372,7 +372,7 @@ export default function HomePage() {
             >
               <div className="program-image-container">
                 <Image
-                  src="/images/kids2.jpg"
+                  src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
                   alt="Young Yogi's Club"
                   fill
                   className="object-cover"

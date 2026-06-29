@@ -3,13 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Activity, Image, Users, Phone } from "lucide-react";
+import { Home, Info, Activity, Image, Users, Phone } from "lucide-react";
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   const navItems = [
     { name: "Home", href: "/", icon: Home },
+    { name: "About", href: "/about", icon: Info },
     { name: "Programs", href: "/programs", icon: Activity },
     { name: "Gallery", href: "/gallery", icon: Image },
     { name: "Team", href: "/team", icon: Users },

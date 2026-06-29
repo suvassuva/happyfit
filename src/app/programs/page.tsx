@@ -14,7 +14,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "A playful introduction to yoga where toddlers and young kids explore movement, story-based poses, and simple breathing exercises.",
     color: "pink",
-    img: "/images/little yogis.jpg"
+    img: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80"
   },
   {
     title: "Young Yogi’s Club",
@@ -22,7 +22,7 @@ const PROGRAMS = [
     duration: "60 Mins",
     description: "Building strength, body awareness, and emotional resilience through fun yoga sequences, games, and basic mindfulness tools.",
     color: "blue",
-    img: "/images/kids2.jpg"
+    img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
   },
   {
     title: "Limitless Club",
@@ -30,7 +30,7 @@ const PROGRAMS = [
     duration: "60 Mins",
     description: "Empowering teens with physical fitness, flexibility, stress-management techniques, and a positive self-image in a supportive social environment.",
     color: "pink",
-    img: "/images/Limitless club (1).jpg"
+    img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
   },
   {
     title: "Special Fit",
@@ -38,7 +38,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "An inclusive, adaptive program customized to nurture motor skills, focus, and sensory coordination for children with unique learning styles.",
     color: "blue",
-    img: "/images/Special Fit.jpg"
+    img: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80"
   },
   {
     title: "Solo- Fit: Personalized Kids Yoga",
@@ -46,7 +46,7 @@ const PROGRAMS = [
     duration: "Private Session",
     description: "One-on-one tailored sessions designed to meet your child's specific physical, emotional, or developmental goals with personalized attention.",
     color: "pink",
-    img: "/images/Solofit.jpg"
+    img: "https://images.unsplash.com/photo-1616699002805-0a21fc929981?w=600&q=80"
   },
   {
     title: "Pause Fit",
@@ -54,7 +54,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "A mindfulness and relaxation-centered session focused on deep breathing, self-regulation tools, and sound healing to calm active minds.",
     color: "blue",
-    img: "/images/Pause Fit.jpg"
+    img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80"
   },
   {
     title: "The Yoga Nest",
@@ -62,54 +62,10 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "Bond with your child through partner yoga, cooperative movements, and group mindfulness games designed to build trust and family connection.",
     color: "pink",
-    img: "/images/Yoga Nest.jpg"
+    img: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&q=80"
   }
 ];
 
-
-const PRICING_PLANS = [
-  {
-    title: "Monthly",
-    price: "$80",
-    period: "/mo",
-    popular: false,
-    features: [
-      "4 sessions per month",
-      "Basic progress report",
-      "Refund policy applicable",
-      "Access to standard classes"
-    ],
-    btnText: "Get Started"
-  },
-  {
-    title: "Quarterly",
-    price: "$210",
-    period: "/3 mo",
-    popular: true,
-    features: [
-      "12 sessions total",
-      "Detailed mindfulness report",
-      "1 free class guest pass for a friend",
-      "Priority scheduling & booking",
-      "Complimentary club t-shirt"
-    ],
-    btnText: "Unravel Quarterly"
-  },
-  {
-    title: "Yearly",
-    price: "$750",
-    period: "/yr",
-    popular: false,
-    features: [
-      "50 sessions total",
-      "Personal wellness coach audits",
-      "Free Summer Camp entry ticket",
-      "Exclusive members-only weekend events",
-      "10% discount on boutique retail items"
-    ],
-    btnText: "Enroll Yearly"
-  }
-];
 
 const FAQS = [
   {
@@ -172,52 +128,6 @@ export default function ProgramsPage() {
                     Enroll Now
                   </Link>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PRICING PLANS */}
-      <section className="section pricing-section">
-        <div className="container">
-          <h2 className="section-title">Flexible Plans</h2>
-          <p className="section-subtitle">
-            Choose the plan that fits your family's schedule and child's wellness goals.
-          </p>
-
-          <div className="pricing-grid">
-            {PRICING_PLANS.map((plan) => (
-              <motion.div
-                key={plan.title}
-                className={`card price-card ${plan.popular ? "price-card-popular" : ""}`}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                {plan.popular && <span className="popular-badge">Most Popular</span>}
-                <div className="price-card-header">
-                  <h3 className="price-card-title">{plan.title}</h3>
-                  <div className="price-card-amount">
-                    {plan.price}<span>{plan.period}</span>
-                  </div>
-                </div>
-
-                <ul className="price-features">
-                  {plan.features.map((feat) => (
-                    <li key={feat} className="price-feature-item">
-                      <Check size={16} className="price-feature-icon" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/connect"
-                  className={`btn ${plan.popular ? "btn-secondary" : "btn-outline-blue"}`}
-                  style={{ width: "100%" }}
-                >
-                  {plan.btnText}
-                </Link>
               </motion.div>
             ))}
           </div>

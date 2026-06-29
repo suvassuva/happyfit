@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import BottomNav from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" style={{ paddingTop: "var(--header-height)" }}>
         {/* Background Decorative Glow Blobs */}
         <div className="bg-blobs">
