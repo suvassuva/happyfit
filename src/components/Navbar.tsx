@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Sparkles, Menu, X } from "lucide-react";
 
@@ -21,8 +22,14 @@ export default function Navbar() {
     <header className="header">
       <div className="container header-container">
         <Link href="/" className="logo">
-          <Sparkles className="logo-icon" size={24} fill="var(--accent-pink)" />
-          <span>Happy Fit Club</span>
+          <Image
+            src="/images/happy-fit-logo.jpg"
+            alt="Happy Fit Club Logo"
+            width={64}
+            height={64}
+            unoptimized
+            style={{ borderRadius: "50%", objectFit: "cover" }}
+          />
         </Link>
 
         {/* Desktop Navigation */}

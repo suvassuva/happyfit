@@ -2,91 +2,70 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Check, Calendar, Clock, Smile, Sparkles, Compass, MapPin } from "lucide-react";
+import { Check, Calendar, Clock, Smile, Sparkles, Compass, MapPin, ArrowRight } from "lucide-react";
 import Accordion from "@/components/Accordion";
 
 const PROGRAMS = [
   {
-    title: "Tiny Yoga",
-    age: "Ages 2 - 4 Years",
-    duration: "30 Mins",
-    description: "Nurturing deep breaths & happy hearts through play, stories, and sensory imitation.",
-    color: "pink",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="35" r="15" fill="var(--accent-pink)"/>
-        <path d="M20 70C20 60 30 50 50 50C70 50 80 60 80 70V80H20V70Z" fill="var(--accent-blue)" fillOpacity="0.4"/>
-      </svg>
-    )
-  },
-  {
-    title: "Kids Yoga",
-    age: "Ages 5 - 9 Years",
+    title: "Little Yogi’s Club",
+    age: "Ages 3 - 6 Years",
     duration: "45 Mins",
-    description: "A playful blend of traditional poses, breathing exercises, and mindfulness games to build focus, strength, and confidence.",
-    color: "blue",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 40C58.2843 40 65 33.2843 65 25C65 16.7157 58.2843 10 50 10C41.7157 10 35 16.7157 35 25C35 33.2843 41.7157 40 50 40Z" fill="var(--accent-blue)"/>
-        <path d="M25 80C25 65 35 55 50 55C65 55 75 65 75 80V90H25V80Z" fill="var(--accent-pink)" fillOpacity="0.6"/>
-      </svg>
-    )
+    description: "A playful introduction to yoga where toddlers and young kids explore movement, story-based poses, and simple breathing exercises.",
+    color: "pink",
+    img: "/images/little yogis.jpg"
   },
   {
-    title: "Teen Yoga",
-    age: "Ages 10 - 14 Years",
+    title: "Young Yogi’s Club",
+    age: "Ages 6 - 12 Years",
     duration: "60 Mins",
-    description: "Empowering teens with physical strength, flexibility, and a positive body image during transitional developmental years.",
-    color: "pink",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 15C50 15 20 45 20 65C20 81.5685 33.4315 95 50 95C66.5685 95 80 81.5685 80 65C80 45 50 15 50 15Z" fill="var(--accent-pink)"/>
-        <circle cx="50" cy="65" r="12" fill="white"/>
-      </svg>
-    )
+    description: "Building strength, body awareness, and emotional resilience through fun yoga sequences, games, and basic mindfulness tools.",
+    color: "blue",
+    img: "/images/kids2.jpg"
   },
   {
-    title: "Family Yoga",
-    age: "Ages 3 & Up",
+    title: "Limitless Club",
+    age: "Ages 12 - 17 Years",
+    duration: "60 Mins",
+    description: "Empowering teens with physical fitness, flexibility, stress-management techniques, and a positive self-image in a supportive social environment.",
+    color: "pink",
+    img: "/images/Limitless club (1).jpg"
+  },
+  {
+    title: "Special Fit",
+    age: "Ages 5+ Years",
     duration: "45 Mins",
-    description: "Connect with your family and others through partner poses, cooperative stretching, and team-building exercises.",
+    description: "An inclusive, adaptive program customized to nurture motor skills, focus, and sensory coordination for children with unique learning styles.",
     color: "blue",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="35" cy="30" r="12" fill="var(--accent-blue)"/>
-        <circle cx="65" cy="30" r="12" fill="var(--accent-pink)"/>
-        <path d="M15 75C15 65 25 55 40 55H60C75 55 85 65 85 75V85H15V75Z" fill="var(--accent-blue)" fillOpacity="0.4"/>
-      </svg>
-    )
+    img: "/images/Special Fit.jpg"
   },
   {
-    title: "Weekend Retreat",
-    age: "Ages 5 & Up",
-    duration: "Half-Day",
-    description: "Interactive workshops for kids and parents, including theme-based yoga, mindfulness crafts, and healthy snack preparation.",
+    title: "Solo- Fit: Personalized Kids Yoga",
+    age: "Ages 3 - 17 Years",
+    duration: "Private Session",
+    description: "One-on-one tailored sessions designed to meet your child's specific physical, emotional, or developmental goals with personalized attention.",
     color: "pink",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="20" width="60" height="60" rx="12" fill="var(--accent-pink)" fillOpacity="0.2" stroke="var(--accent-pink)" strokeWidth="6"/>
-        <circle cx="50" cy="50" r="15" fill="var(--accent-blue)"/>
-      </svg>
-    )
+    img: "/images/Solofit.jpg"
   },
   {
-    title: "Summer Camp",
-    age: "Ages 4 - 10 Years",
-    duration: "5 Days",
-    description: "Our signature annual camp with daily yoga adventures, creative mindfulness crafts, and outdoor nature exploration.",
+    title: "Pause Fit",
+    age: "Ages 3 - 17 Years",
+    duration: "45 Mins",
+    description: "A mindfulness and relaxation-centered session focused on deep breathing, self-regulation tools, and sound healing to calm active minds.",
     color: "blue",
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="50,15 90,85 10,85" fill="var(--accent-blue)"/>
-        <polygon points="50,40 80,90 20,90" fill="var(--accent-pink)" fillOpacity="0.6"/>
-      </svg>
-    )
+    img: "/images/Pause Fit.jpg"
+  },
+  {
+    title: "The Yoga Nest",
+    age: "Parent Child / Family",
+    duration: "45 Mins",
+    description: "Bond with your child through partner yoga, cooperative movements, and group mindfulness games designed to build trust and family connection.",
+    color: "pink",
+    img: "/images/Yoga Nest.jpg"
   }
 ];
+
 
 const PRICING_PLANS = [
   {
@@ -173,16 +152,14 @@ export default function ProgramsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <div 
-                  className="program-image-container"
-                  style={{
-                    backgroundColor: prog.color === "pink" ? "var(--accent-pink-light)" : "var(--accent-blue-light)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  {prog.svg}
+                <div className="program-image-container">
+                  <Image
+                    src={prog.img}
+                    alt={prog.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                  />
                 </div>
                 <div className="program-info">
                   <div className="program-meta">

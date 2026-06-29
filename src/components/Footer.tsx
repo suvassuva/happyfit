@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
+import { Sparkles, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -11,12 +12,38 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="logo">
-              <Sparkles className="logo-icon" size={24} fill="var(--accent-pink)" />
-              <span>Happy Fit Club</span>
+              <Image
+                src="/images/happy-fit-logo.jpg"
+                alt="Happy Fit Club Logo"
+                width={72}
+                height={72}
+                unoptimized
+                style={{ borderRadius: "50%", objectFit: "cover" }}
+              />
             </Link>
             <p className="footer-description">
               Nurturing little souls through movement, mindfulness, and play in a safe, premium environment.
             </p>
+            <div className="footer-social-links">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/>
+                  <polygon points="10 15 15 12 10 9"/>
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div>
@@ -64,17 +91,23 @@ export default function Footer() {
           <div>
             <h4 className="footer-links-title">Connect</h4>
             <ul className="footer-links-list" style={{ gap: "8px" }}>
-              <li style={{ fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                <strong>Phone:</strong><br />
-                <a href="tel:+919880115287" style={{ color: "inherit", textDecoration: "none" }} className="footer-link">
-                  Gunjan @ 9880115287
-                </a>
+              <li style={{ fontSize: "0.9rem", color: "var(--text-secondary)", display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                <Phone size={16} style={{ marginTop: "3px", color: "var(--accent-pink)", flexShrink: 0 }} />
+                <div>
+                  <strong>Phone:</strong><br />
+                  <a href="tel:+919880115287" style={{ color: "inherit", textDecoration: "none" }} className="footer-link">
+                    Gunjan @ 9880115287
+                  </a>
+                </div>
               </li>
-              <li style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginTop: "4px" }}>
-                <strong>Email:</strong><br />
-                <a href="mailto:happyfitclubblr@gmail.com" style={{ color: "inherit", textDecoration: "none" }} className="footer-link">
-                  happyfitclubblr@gmail.com
-                </a>
+              <li style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginTop: "4px", display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                <Mail size={16} style={{ marginTop: "3px", color: "var(--accent-blue)", flexShrink: 0 }} />
+                <div>
+                  <strong>Email:</strong><br />
+                  <a href="mailto:happyfitclubblr@gmail.com" style={{ color: "inherit", textDecoration: "none" }} className="footer-link">
+                    happyfitclubblr@gmail.com
+                  </a>
+                </div>
               </li>
               <li style={{ marginTop: "12px" }}>
                 <a 
@@ -119,10 +152,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span className="footer-copyright">
-            © 2026 Happy Fit Club. Nurturing little souls through movement.
-          </span>
-          <span className="footer-copyright">
-            Designed with love for healthy kids.
+            © 2026 Happy Fit Club
           </span>
         </div>
       </div>

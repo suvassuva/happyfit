@@ -115,9 +115,9 @@ export default function ConnectPage() {
                     target="_blank" 
                     rel="noreferrer" 
                     className="google-trust-badge"
-                    style={{ width: "100%", justifyContent: "center" }}
+                    style={{ width: "100%", justifyContent: "center", padding: "4px 10px", gap: "6px" }}
                   >
-                    <svg viewBox="0 0 24 24" width="18" height="18" style={{ display: "block", flexShrink: 0 }}>
+                    <svg viewBox="0 0 24 24" width="14" height="14" style={{ display: "block", flexShrink: 0 }}>
                       <path
                         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                         fill="#4285F4"
@@ -135,15 +135,15 @@ export default function ConnectPage() {
                         fill="#EA4335"
                       />
                     </svg>
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: "1.2" }}>
-                      <div style={{ display: "flex", gap: "2px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px", lineHeight: "1" }}>
+                      <span style={{ fontSize: "0.7rem", color: "var(--text-primary)", fontWeight: "600" }}>
+                        5.0 Rating
+                      </span>
+                      <div style={{ display: "flex", gap: "1px" }}>
                         {"★★★★★".split("").map((star, i) => (
-                          <span key={i} style={{ color: "#fbbf24", fontSize: "0.85rem" }}>{star}</span>
+                          <span key={i} style={{ color: "#fbbf24", fontSize: "0.75rem" }}>{star}</span>
                         ))}
                       </div>
-                      <span style={{ fontSize: "0.75rem", color: "var(--text-primary)", fontWeight: "600" }}>
-                        5.0 Rating (16 Google Reviews)
-                      </span>
                     </div>
                   </a>
                 </div>

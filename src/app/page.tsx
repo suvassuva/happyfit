@@ -1,21 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { 
-  Award, 
-  Smile, 
-  Shield, 
-  Sparkles, 
-  ArrowRight, 
-  Heart, 
-  Brain, 
-  Zap, 
-  Users, 
-  Sun, 
-  CheckCircle 
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Award,
+  Smile,
+  Shield,
+  Sparkles,
+  ArrowRight,
+  Heart,
+  Brain,
+  Zap,
+  Users,
+  Sun,
+  CheckCircle
 } from "lucide-react";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 
@@ -42,6 +42,20 @@ const TESTIMONIALS = [
 ];
 
 export default function HomePage() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const heroImages = [
+    "/images/hero_yoga.png",
+    "/images/little yogis.jpg",
+    "/images/kids3.jpg"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,36 +76,21 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="hero">
         <div className="container hero-grid">
-          <motion.div 
+          <motion.div
             className="hero-content"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="mission-tag">Healthy body, happy mind, bright future</span>
-            <h1 className="hero-title">
-              Nurturing Little Souls Through <span>Movement & Play</span>
-            </h1>
-            <p className="hero-subtitle">
-              We provide a safe, premium space for children and teens to learn, grow, and explore mindfulness, building confidence that lasts a lifetime.
-            </p>
-            <div className="hero-ctas">
-              <Link href="/connect" className="btn btn-primary">
-                Book Free Trial
-                <ArrowRight size={16} />
-              </Link>
-              <Link href="/programs" className="btn btn-outline-blue">
-                Learn More
-              </Link>
-            </div>
-            <div style={{ marginTop: "24px" }}>
-              <a 
+            <div style={{ marginBottom: "16px" }}>
+              <a
                 href="https://www.google.com/maps/search/?api=1&query=Happy+Fit+Club+Seetharampalya+Bengaluru"
                 target="_blank"
                 rel="noreferrer"
                 className="google-trust-badge"
+                style={{ padding: "4px 10px", gap: "6px" }}
               >
-                <svg viewBox="0 0 24 24" width="18" height="18" style={{ display: "block", flexShrink: 0 }}>
+                <svg viewBox="0 0 24 24" width="14" height="14" style={{ display: "block", flexShrink: 0 }}>
                   <path
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                     fill="#4285F4"
@@ -109,36 +108,63 @@ export default function HomePage() {
                     fill="#EA4335"
                   />
                 </svg>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: "1.2" }}>
-                  <div style={{ display: "flex", gap: "2px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", lineHeight: "1" }}>
+                  <span style={{ fontSize: "0.7rem", color: "var(--text-primary)", fontWeight: "600" }}>
+                    5.0 Rating
+                  </span>
+                  <div style={{ display: "flex", gap: "1px" }}>
                     {"★★★★★".split("").map((star, i) => (
-                      <span key={i} style={{ color: "#fbbf24", fontSize: "0.85rem" }}>{star}</span>
+                      <span key={i} style={{ color: "#fbbf24", fontSize: "0.75rem" }}>{star}</span>
                     ))}
                   </div>
-                  <span style={{ fontSize: "0.75rem", color: "var(--text-primary)", fontWeight: "600" }}>
-                    5.0 Rating (16 Google Reviews)
-                  </span>
                 </div>
               </a>
             </div>
+            <span className="mission-tag">Play. Pause. Prosper.</span>
+            <h1 className="hero-title">
+              Nurturing Little Souls Through <span>Movement & Play</span>
+            </h1>
+            <p className="hero-subtitle">
+              We provide a safe, premium space for children and teens to learn, grow, and explore mindfulness, building confidence that lasts a lifetime.
+            </p>
+            <div className="hero-ctas">
+              <Link href="/connect" className="btn btn-primary">
+                Book Free Trial
+                <ArrowRight size={14} />
+              </Link>
+              <Link href="/programs" className="btn btn-outline-blue">
+                Learn More
+              </Link>
+            </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="hero-image-wrapper"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="hero-circle-bg">
-              <div className="hero-image-container">
-                <Image
-                  src="/images/hero_yoga.png"
-                  alt="Instructor and kids practicing yoga together"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
-                />
+              <div className="hero-image-container" style={{ position: "relative" }}>
+                <AnimatePresence>
+                  <motion.div
+                    key={currentImageIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    style={{ position: "absolute", width: "100%", height: "100%" }}
+                  >
+                    <Image
+                      src={heroImages[currentImageIndex]}
+                      alt="Happy Fit Club Hero Slider"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
@@ -153,8 +179,8 @@ export default function HomePage() {
             We focus on play-based learning and self-expression to make mindfulness exciting and accessible.
           </p>
 
-          <motion.div 
-            className="grid grid-4"
+          <motion.div
+            className="grid grid-4 mobile-slider"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -206,25 +232,23 @@ export default function HomePage() {
       {/* 3. OUR MISSION / VALUE PREPOSITION */}
       <section className="section">
         <div className="container mission-grid">
-          <motion.div 
+          <motion.div
             className="mission-image-wrapper"
             initial={{ x: -30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            style={{ backgroundColor: "var(--accent-blue-light)", display: "flex", alignItems: "center", justifyContent: "center" }}
           >
-            {/* Elegant SVG Graphic representing children wellness */}
-            <svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="120" cy="120" r="100" fill="white" opacity="0.6"/>
-              <path d="M120 70C120 70 85 105 85 130C85 149.33 100.67 165 120 165C139.33 165 155 149.33 155 130C155 105 120 70 120 70Z" fill="var(--accent-pink)" fillOpacity="0.8"/>
-              <path d="M120 75C125.523 75 130 70.5228 130 65C130 59.4772 125.523 55 120 55C114.477 55 110 59.4772 110 65C110 70.5228 114.477 75 120 75Z" fill="var(--accent-blue)"/>
-              <circle cx="70" cy="120" r="15" fill="var(--accent-blue)" opacity="0.5"/>
-              <circle cx="170" cy="120" r="15" fill="var(--accent-blue)" opacity="0.5"/>
-            </svg>
+            <Image
+              src="/images/kids.jpg"
+              alt="Kids practicing yoga together on mats"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="mission-content"
             initial={{ x: 30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -281,25 +305,28 @@ export default function HomePage() {
 
           <div className="grid grid-3">
             {/* Program 1 */}
-            <motion.div 
+            <motion.div
               className="card program-card"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="program-image-container" style={{ backgroundColor: "var(--accent-pink-light)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M50 30C58.2843 30 65 23.2843 65 15C65 6.71573 58.2843 0 50 0C41.7157 0 35 6.71573 35 15C35 23.2843 41.7157 30 50 30Z" fill="var(--accent-pink)"/>
-                  <path d="M85 75C85 58.4315 71.5685 45 55 45H45C28.4315 45 15 58.4315 15 75V100H85V75Z" fill="var(--accent-blue)" fillOpacity="0.4"/>
-                </svg>
+              <div className="program-image-container">
+                <Image
+                  src="/images/fit.jpg"
+                  alt="Yoga Fit Class for Kids and Teens"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                />
               </div>
               <div className="program-info">
                 <div className="program-meta">
-                  <span className="badge badge-pink">Ages 0 - 2</span>
+                  <span className="badge badge-pink">Ages 3 - 17</span>
                   <span className="badge badge-blue">30 Mins</span>
                 </div>
-                <h3 className="program-card-title">Baby Yoga</h3>
+                <h3 className="program-card-title">Yoga Fit (3–17 yrs)</h3>
                 <p className="program-card-desc">
-                  A gentle introduction to yoga through massage, songs, and simple movements to nurture development.
+                  A dynamic blend of physical yoga poses and fitness exercises designed to build strength and coordination for kids and teens.
                 </p>
                 <Link href="/programs" className="mission-link" style={{ fontSize: "0.9rem" }}>
                   Read More <ArrowRight size={14} />
@@ -308,25 +335,28 @@ export default function HomePage() {
             </motion.div>
 
             {/* Program 2 */}
-            <motion.div 
+            <motion.div
               className="card program-card"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="program-image-container" style={{ backgroundColor: "var(--accent-blue-light)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M30 35C30 23.9543 38.9543 15 50 15C61.0457 15 70 23.9543 70 35H30Z" fill="var(--accent-blue)"/>
-                  <rect x="20" y="45" width="60" height="40" rx="10" fill="var(--accent-pink)" fillOpacity="0.6"/>
-                </svg>
+              <div className="program-image-container">
+                <Image
+                  src="/images/little yogis.jpg"
+                  alt="Little Yogi's Club"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                />
               </div>
               <div className="program-info">
                 <div className="program-meta">
-                  <span className="badge badge-pink">Ages 5 - 8</span>
+                  <span className="badge badge-pink">Ages 3 - 6</span>
                   <span className="badge badge-blue">45 Mins</span>
                 </div>
-                <h3 className="program-card-title">Kids Yoga</h3>
+                <h3 className="program-card-title">Little Yogi’s Club (3–6 yrs)</h3>
                 <p className="program-card-desc">
-                  A playful blend of traditional poses, breathing exercises, and games to build focus, strength, and confidence.
+                  A playful introduction to yoga where toddlers and young kids explore movement, story-based poses, and simple breathing exercises.
                 </p>
                 <Link href="/programs" className="mission-link" style={{ fontSize: "0.9rem" }}>
                   Read More <ArrowRight size={14} />
@@ -335,25 +365,28 @@ export default function HomePage() {
             </motion.div>
 
             {/* Program 3 */}
-            <motion.div 
+            <motion.div
               className="card program-card"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="program-image-container" style={{ backgroundColor: "var(--accent-pink-light)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="50" cy="50" r="30" stroke="var(--accent-pink)" strokeWidth="6"/>
-                  <circle cx="50" cy="50" r="10" fill="var(--accent-blue)"/>
-                </svg>
+              <div className="program-image-container">
+                <Image
+                  src="/images/kids2.jpg"
+                  alt="Young Yogi's Club"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                />
               </div>
               <div className="program-info">
                 <div className="program-meta">
-                  <span className="badge badge-pink">Ages 9 - 12</span>
+                  <span className="badge badge-pink">Ages 6 - 12</span>
                   <span className="badge badge-blue">60 Mins</span>
                 </div>
-                <h3 className="program-card-title">Teen Yoga</h3>
+                <h3 className="program-card-title">Young Yogi’s Club (6–12 yrs)</h3>
                 <p className="program-card-desc">
-                  Empowering teens with physical strength, flexibility, and a positive body image during teen developmental years.
+                  Building strength, body awareness, and emotional resilience through fun yoga sequences, games, and basic mindfulness tools.
                 </p>
                 <Link href="/programs" className="mission-link" style={{ fontSize: "0.9rem" }}>
                   Read More <ArrowRight size={14} />
@@ -378,7 +411,7 @@ export default function HomePage() {
             Yoga and mindfulness practices benefit children in their physical, emotional, and social lives.
           </p>
 
-          <div className="grid grid-3">
+          <div className="grid grid-3 mobile-slider">
             <div className="card benefit-card">
               <span className="benefit-num">01</span>
               <div>
@@ -436,7 +469,7 @@ export default function HomePage() {
           <h2 className="section-title">Word of Our Community</h2>
           <p className="section-subtitle">What parents say about their kids' transformation at Happy Fit Club.</p>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
-            <a 
+            <a
               href="https://www.google.com/maps/search/?api=1&query=Happy+Fit+Club+Seetharampalya+Bengaluru"
               target="_blank"
               rel="noreferrer"
@@ -444,7 +477,7 @@ export default function HomePage() {
               style={{ padding: "6px 14px", borderRadius: "20px" }}
             >
               <span style={{ display: "inline-flex", alignItems: "center", gap: "4px", fontSize: "0.8rem", color: "var(--text-secondary)" }}>
-                Verified on Google <span style={{ color: "#fbbf24", fontWeight: "bold" }}>★ 5.0</span> (16 Reviews)
+                Verified on Google <span style={{ color: "#fbbf24", fontWeight: "bold" }}>★ 5.0</span>
               </span>
             </a>
           </div>
