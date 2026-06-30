@@ -63,7 +63,7 @@ const WHY_CARDS = [
     desc: "We blend movement, music, games, and storytelling for maximum child engagement.",
     icon: Sparkles,
     iconColor: "blue",
-    img: "/images/why-fun-sessions.png",
+    img: "/images/why-fun-sessions.jpg",
   }
 ];
 
