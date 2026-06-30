@@ -42,7 +42,7 @@ const WHY_CARDS = [
     desc: "Our instructors are certified in kids yoga & child-focused mindfulness practices.",
     icon: Award,
     iconColor: "pink",
-    img: null,
+    img: "/images/why-certified-instructors.jpg",
   },
   {
     title: "Child-Centric Approach",
@@ -56,7 +56,7 @@ const WHY_CARDS = [
     desc: "Our space is fully child-proofed, sanitized daily, and loaded with soft support mats.",
     icon: Shield,
     iconColor: "pink",
-    img: null,
+    img: "/images/why-safe-environment.jpg",
   },
   {
     title: "Fun Sessions",
