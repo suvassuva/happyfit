@@ -824,12 +824,12 @@ p {
   }
 
   .why-card-title {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     margin-bottom: 8px;
   }
 
   .why-card-desc {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     line-height: 1.5;
   }
 }
@@ -933,13 +933,13 @@ p {
 }
 
 .why-card-title {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .why-card-desc {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 

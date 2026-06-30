@@ -256,7 +256,6 @@ export default function HomePage() {
             <div className="marquee-track">
               {/* Original set */}
               {WHY_CARDS.map((card, i) => {
-                const Icon = card.icon;
                 return (
                   <motion.div key={`why-${i}`} className="card why-card" variants={itemVariants}>
                     {card.img && (
@@ -264,9 +263,6 @@ export default function HomePage() {
                         <Image src={card.img} alt={card.title} fill className="object-cover" />
                       </div>
                     )}
-                    <div className={`why-icon-container why-icon-${card.iconColor}`}>
-                      <Icon size={24} />
-                    </div>
                     <h3 className="why-card-title">{card.title}</h3>
                     <p className="why-card-desc">{card.desc}</p>
                   </motion.div>
@@ -275,7 +271,6 @@ export default function HomePage() {
 
               {/* Duplicated set for seamless loop */}
               {WHY_CARDS.map((card, i) => {
-                const Icon = card.icon;
                 return (
                   <div key={`why-dup-${i}`} className="card why-card">
                     {card.img && (
@@ -283,9 +278,6 @@ export default function HomePage() {
                         <Image src={card.img} alt={card.title} fill className="object-cover" />
                       </div>
                     )}
-                    <div className={`why-icon-container why-icon-${card.iconColor}`}>
-                      <Icon size={24} />
-                    </div>
                     <h3 className="why-card-title">{card.title}</h3>
                     <p className="why-card-desc">{card.desc}</p>
                   </div>
