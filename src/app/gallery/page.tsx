@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ImageIcon, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const FILTERS = ["All Moments", "Yoga Classes", "Events", "Summer Camp", "Workshops"];
 
@@ -131,12 +131,12 @@ const GALLERY_ITEMS = [
 ];
 
 const INSTAGRAM_POSTS = [
-  { id: 1, color: "var(--accent-pink-light)" },
-  { id: 2, color: "var(--accent-blue-light)" },
-  { id: 3, color: "#e2f1e8" },
-  { id: 4, color: "#faebeb" },
-  { id: 5, color: "#f3e8ff" },
-  { id: 6, color: "#fffbeb" }
+  { id: 1, img: "/images/insta-1.jpg" },
+  { id: 2, img: "/images/insta-2.jpg" },
+  { id: 3, img: "/images/insta-3.jpg" },
+  { id: 4, img: "/images/insta-5.jpg" },
+  { id: 5, img: "/images/insta-6.jpg" },
+  { id: 6, img: "/images/insta-4.jpg" }
 ];
 
 export default function GalleryPage() {
@@ -263,30 +263,49 @@ export default function GalleryPage() {
             </svg>
             <h2 className="section-title" style={{ marginBottom: "8px" }}>Follow Our Joyful Journey</h2>
             <p style={{ color: "var(--text-secondary)", marginBottom: "16px" }}>
-              Stay updated with daily doses of youth wellness on Instagram @HappyFitClub
+              Stay updated with daily doses of youth wellness on Instagram @happyfitclubblr
             </p>
-            <a href="#" className="instagram-link">
+            <a 
+              href="https://www.instagram.com/happyfitclubblr?utm_source=qr&igsh=MWxmOXhxbG9idHE3aw==" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="instagram-link"
+            >
               Join the Community <ArrowRight size={14} />
             </a>
           </div>
 
           <div className="instagram-grid">
             {INSTAGRAM_POSTS.map((post) => (
-              <motion.div
+              <a
                 key={post.id}
-                className="card instagram-card"
-                style={{
-                  backgroundColor: post.color,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "var(--shadow-sm)",
-                  border: "1px solid var(--border-color)"
-                }}
-                whileHover={{ scale: 1.05 }}
+                href="https://www.instagram.com/happyfitclubblr?utm_source=qr&igsh=MWxmOXhxbG9idHE3aw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "block" }}
               >
-                <ImageIcon size={28} style={{ color: "rgba(0,0,0,0.15)" }} />
-              </motion.div>
+                <motion.div
+                  className="card instagram-card"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "var(--shadow-sm)",
+                    border: "1px solid var(--border-color)",
+                    position: "relative",
+                    overflow: "hidden"
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Image
+                    src={post.img}
+                    alt={`Instagram Post ${post.id}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 30vw, 15vw"
+                  />
+                </motion.div>
+              </a>
             ))}
           </div>
         </div>
