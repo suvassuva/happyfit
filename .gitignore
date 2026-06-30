@@ -39,3 +39,32 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw camera uploads (ignored to prevent repository bloat and git push timeouts)
+/public/images/Camp 1.jpg
+/public/images/Camp 2.jpg
+/public/images/Camp 3.jpg
+/public/images/Limitless club (1).jpg
+/public/images/Online Programs 2.jpg
+/public/images/Online Sessions 2.jpg
+/public/images/Pause Fit.jpg
+/public/images/Solofit.jpg
+/public/images/Special Fit.jpg
+/public/images/Wellness Workshops 2.jpg
+/public/images/Wellness Workshops.jpeg
+/public/images/Wellness Workshops.jpg
+/public/images/Yoga Nest.jpg
+/public/images/kids.jpg
+/public/images/kids1.jpg
+/public/images/kids2.jpg
+/public/images/kids3.jpg
+/public/images/kids4.jpg
+/public/images/kids5.jpg
+/public/images/little yogis.jpg
+/public/images/off.jpg
+/public/images/off1.jpg
+/public/images/offline.jpg
+/public/images/on1.jpg
+/public/images/on2.jpg
+/public/images/online1.jpg
+/public/images/online3.jpg
