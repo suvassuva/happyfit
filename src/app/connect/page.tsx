@@ -7,8 +7,7 @@ import {
   Phone as PhoneIcon, 
   Mail, 
   Send, 
-  CheckCircle,
-  HelpCircle
+  CheckCircle
 } from "lucide-react";
 
 export default function ConnectPage() {
@@ -47,7 +46,7 @@ export default function ConnectPage() {
         <div className="container">
           <h1 className="section-title">Get in Touch</h1>
           <p className="section-subtitle">
-            Have questions about our movement programs? We're here to help your little one start their wellness journey. Reach out today!
+            Have questions about our movement programs? We&apos;re here to help your little one start their wellness journey. Reach out today!
           </p>
         </div>
       </section>
@@ -70,7 +69,7 @@ export default function ConnectPage() {
                 <div className="contact-info-list">
                   <div className="contact-info-item">
                     <div className="contact-info-icon-wrapper">
-                      <MapPin size={20} />
+                      <MapPin size={16} />
                     </div>
                     <div>
                       <div className="contact-info-label">Our Studio</div>
@@ -82,7 +81,7 @@ export default function ConnectPage() {
 
                   <div className="contact-info-item">
                     <div className="contact-info-icon-wrapper contact-info-icon-wrapper-pink">
-                      <PhoneIcon size={20} />
+                      <PhoneIcon size={16} />
                     </div>
                     <div>
                       <div className="contact-info-label">Call Us</div>
@@ -96,7 +95,7 @@ export default function ConnectPage() {
 
                   <div className="contact-info-item">
                     <div className="contact-info-icon-wrapper">
-                      <Mail size={20} />
+                      <Mail size={16} />
                     </div>
                     <div>
                       <div className="contact-info-label">Email Us</div>
@@ -170,7 +169,7 @@ export default function ConnectPage() {
                 <div className="card map-card">
                   <div className="map-background"></div>
                   <div className="map-phone-mockup">
-                    <MapPin className="map-icon" size={32} />
+                    <MapPin className="map-icon" size={24} />
                     <div className="map-mockup-title">Studio Map</div>
                     <div className="map-mockup-desc">Find us in Seetharampalya, Bengaluru</div>
                   </div>
@@ -233,7 +232,7 @@ export default function ConnectPage() {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="ageGroup" className="form-label">Child's Age</label>
+                        <label htmlFor="ageGroup" className="form-label">Child&apos;s Age</label>
                         <select
                           id="ageGroup"
                           name="ageGroup"

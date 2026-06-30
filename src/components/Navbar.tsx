@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Sparkles, Menu, X } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -59,63 +58,15 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile menu toggle (just for visual symmetry, or showing quick contact details since we have bottom nav) */}
-        <button
-          className="mobile-menu-btn"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
+        {/* Mobile: Quick Call Button (replaces hamburger — bottom nav handles navigation) */}
+        <a
+          href="tel:+919880115287"
+          className="mobile-call-btn"
+          aria-label="Call Happy Fit Club"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <Phone size={20} />
+        </a>
       </div>
-
-      {/* Slide-out Mobile Panel (Drawer for extra links/quick info) */}
-      {mobileMenuOpen && (
-        <div 
-          style={{
-            position: "fixed",
-            top: "var(--header-height)",
-            left: 0,
-            width: "100%",
-            backgroundColor: "white",
-            borderBottom: "1px solid var(--border-color)",
-            padding: "24px",
-            zIndex: 999,
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-            boxShadow: "var(--shadow-md)"
-          }}
-        >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  textDecoration: "none",
-                  color: isActive ? "var(--accent-pink)" : "var(--text-primary)",
-                  fontWeight: isActive ? "700" : "500",
-                  fontSize: "1.1rem",
-                  padding: "8px 0"
-                }}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-          <Link 
-            href="/connect" 
-            className="btn btn-primary"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ marginTop: "8px" }}
-          >
-            Book Free Trial
-          </Link>
-        </div>
-      )}
     </header>
   );
 }

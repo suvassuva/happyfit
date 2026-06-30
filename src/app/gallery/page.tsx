@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Image as ImageIcon, ArrowRight } from "lucide-react";
+import { ImageIcon, ArrowRight } from "lucide-react";
 
 const FILTERS = ["All Moments", "Yoga Classes", "Events", "Summer Camp", "Workshops"];
 
@@ -12,6 +13,8 @@ const GALLERY_ITEMS = [
     id: 1,
     category: "Yoga Classes",
     title: "Morning Stretch",
+    type: "video",
+    src: "/images/promo-studio.mp4",
     bg: "linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)", // Pinkish-blue soft gradient
     svg: (
       <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +27,8 @@ const GALLERY_ITEMS = [
     id: 2,
     category: "Events",
     title: "Family Day Out",
+    type: "video",
+    src: "/images/promo-hook.mp4",
     bg: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)",
     svg: (
       <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,6 +42,8 @@ const GALLERY_ITEMS = [
     id: 3,
     category: "Summer Camp",
     title: "Nature Meditation",
+    type: "image",
+    src: "/images/kids-yoga-3.png",
     bg: "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)",
     svg: (
       <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +56,8 @@ const GALLERY_ITEMS = [
     id: 4,
     category: "Workshops",
     title: "Mindfulness Crafting",
+    type: "image",
+    src: "/images/kids-yoga-4.png",
     bg: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
     svg: (
       <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,29 +159,54 @@ export default function GalleryPage() {
                       alignItems: "center",
                       justifyContent: "center",
                       minHeight: "240px",
-                      position: "relative"
+                      position: "relative",
+                      overflow: "hidden",
+                      borderRadius: "16px"
                     }}
                   >
-                    {item.svg}
+                    {item.src ? (
+                      item.type === "video" ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="object-cover"
+                          style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}
+                        />
+                      ) : (
+                        <Image
+                          src={item.src}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                          style={{ position: "absolute", top: 0, left: 0 }}
+                        />
+                      )
+                    ) : (
+                      item.svg
+                    )}
                     <div
                       style={{
                         position: "absolute",
                         bottom: "20px",
                         textAlign: "center",
                         width: "100%",
-                        padding: "0 10px"
+                        padding: "0 10px",
+                        zIndex: 1
                       }}
                     >
-                      <h3 style={{ color: "white", fontSize: "1.2rem", fontWeight: "700", textShadow: "0 2px 4px rgba(0,0,0,0.15)" }}>
+                      <h3 style={{ color: "white", fontSize: "1.2rem", fontWeight: "700", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>
                         {item.title}
                       </h3>
-                      <span style={{ color: "white", fontSize: "0.8rem", fontWeight: "600", textShadow: "0 1px 2px rgba(0,0,0,0.15)", opacity: 0.9 }}>
+                      <span style={{ color: "white", fontSize: "0.8rem", fontWeight: "600", textShadow: "0 1px 2px rgba(0,0,0,0.3)", opacity: 0.9 }}>
                         {item.category}
                       </span>
                     </div>
 
                     {/* Hover Overlay */}
-                    <div className="gallery-overlay">
+                    <div className="gallery-overlay" style={{ zIndex: 2 }}>
                       <span className="gallery-overlay-badge">View Moment</span>
                     </div>
                   </div>

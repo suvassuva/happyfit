@@ -54,7 +54,7 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80"
+                src="/images/kids-yoga-3.png"
                 alt="Kids practicing mindfulness in Happy Fit Club"
                 fill
                 className="object-cover"
@@ -70,25 +70,25 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <span className="mission-tag">Play. Pause. Prosper.</span>
-              <h2 className="mission-title" style={{ textAlign: "left", fontSize: "1.85rem", marginBottom: "16px" }}>Our Play-Based Philosophy</h2>
-              <p className="mission-desc" style={{ marginBottom: "20px" }}>
+              <h2 className="mission-title" style={{ textAlign: "left" }}>Our Play-Based Philosophy</h2>
+              <p className="mission-desc">
                 Happy Fit Club was founded in Seetharampalya, Bengaluru, with a simple yet powerful goal: to build a modern wellness sanctuary where children and teens can thrive. We believe physical fitness and mental relaxation should be exciting adventures, not chores.
               </p>
-              <p className="mission-desc" style={{ marginBottom: "24px" }}>
+              <p className="mission-desc">
                 By blending traditional yoga postures with interactive stories, music, partner games, and child-safe sensory tools, we teach children how to build body awareness, improve their posture, align their focus, and navigate daily stresses.
               </p>
-              <ul className="mission-bullets" style={{ marginBottom: "0" }}>
-                <li className="mission-bullet-item" style={{ gap: "12px" }}>
+              <ul className="mission-bullets">
+                <li className="mission-bullet-item">
                   <CheckCircle className="mission-bullet-icon" size={20} color="var(--accent-pink)" />
                   <div>
-                    <span className="mission-bullet-text" style={{ fontSize: "0.95rem" }}>Child-Proofed & Premium Studio</span>
+                    <span className="mission-bullet-text">Child-Proofed & Premium Studio</span>
                     <p className="mission-bullet-desc">A safe, beautifully sanitized environment in Hoodi, Mahadevapura.</p>
                   </div>
                 </li>
-                <li className="mission-bullet-item" style={{ gap: "12px" }}>
+                <li className="mission-bullet-item">
                   <CheckCircle className="mission-bullet-icon" size={20} color="var(--accent-pink)" />
                   <div>
-                    <span className="mission-bullet-text" style={{ fontSize: "0.95rem" }}>Tailored for Ages 3 to 17</span>
+                    <span className="mission-bullet-text">Tailored for Ages 3 to 17</span>
                     <p className="mission-bullet-desc">Custom sequences matched to toddler motor development and teen exam stress.</p>
                   </div>
                 </li>
@@ -110,16 +110,16 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
             >
               <span className="mission-tag">Meet the Founder</span>
-              <h2 className="mission-title" style={{ textAlign: "left", fontSize: "2rem", marginBottom: "12px" }}>Gunjan</h2>
+              <h2 className="mission-title" style={{ textAlign: "left" }}>Gunjan</h2>
               <span style={{ fontSize: "1rem", color: "var(--accent-pink)", fontWeight: "600", display: "block", marginBottom: "20px" }}>
                 Founder, Director & Lead Instructor
               </span>
               
-              <p className="mission-desc" style={{ marginBottom: "16px" }}>
+              <p className="mission-desc">
                 Gunjan created Happy Fit Club out of a profound passion for pediatric development and emotional self-regulation. Recognizing the increasing academic demands and screen-time challenges that kids face today, she wanted to construct a dedicated, screen-free haven.
               </p>
               
-              <p className="mission-desc" style={{ marginBottom: "24px" }}>
+              <p className="mission-desc">
                 As a certified kids yoga and mindfulness teacher, Gunjan specializes in creating immersive class flows where kids connect, breathe, and strengthen their muscles. Her patient, warm, and highly engaging teaching style makes children look forward to every single session.
               </p>
 
@@ -148,12 +148,14 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Image
-                src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800&q=80"
-                alt="Gunjan teaching kids yoga"
-                fill
+              <video
+                src="/images/promo-instructor.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </motion.div>
           </div>

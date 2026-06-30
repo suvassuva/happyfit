@@ -18,16 +18,34 @@ interface TestimonialCarouselProps {
 export default function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [autoplayActive, setAutoplayActive] = useState(true);
 
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     setDirection(1);
     setIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
   const handlePrev = () => {
     setDirection(-1);
     setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    // Pause autoplay momentarily on manual interaction
+    setAutoplayActive(false);
   };
+
+  // Autoplay Effect
+  React.useEffect(() => {
+    if (!autoplayActive) {
+      // Resume autoplay after 12 seconds of inactivity
+      const resumeTimer = setTimeout(() => setAutoplayActive(true), 12000);
+      return () => clearTimeout(resumeTimer);
+    }
+
+    const interval = setInterval(() => {
+      handleNext();
+    }, 6000); // Auto-slide every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [autoplayActive, handleNext]);
 
   const current = testimonials[index];
 
@@ -69,7 +87,7 @@ export default function TestimonialCarousel({ testimonials }: TestimonialCarouse
             </div>
 
             {/* Text */}
-            <p className="testimonial-text">"{current.quote}"</p>
+            <p className="testimonial-text">&ldquo;{current.quote}&rdquo;</p>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -90,7 +108,10 @@ export default function TestimonialCarousel({ testimonials }: TestimonialCarouse
             <ChevronLeft size={18} />
           </button>
           <button
-            onClick={handleNext}
+            onClick={() => {
+              handleNext();
+              setAutoplayActive(false);
+            }}
             className="testimonial-btn"
             aria-label="Next testimonial"
           >

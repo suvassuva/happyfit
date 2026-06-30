@@ -10,11 +10,6 @@ import {
   Shield,
   Sparkles,
   ArrowRight,
-  Heart,
-  Brain,
-  Zap,
-  Users,
-  Sun,
   CheckCircle
 } from "lucide-react";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
@@ -41,20 +36,86 @@ const TESTIMONIALS = [
   },
 ];
 
+const WHY_CARDS = [
+  {
+    title: "Certified Instructors",
+    desc: "Our instructors are certified in kids yoga & child-focused mindfulness practices.",
+    icon: Award,
+    iconColor: "pink",
+    img: null,
+  },
+  {
+    title: "Child-Centric Approach",
+    desc: "We focus on play-based learning, stories, and healthy self-expression.",
+    icon: Smile,
+    iconColor: "blue",
+    img: "/images/why-child-centric.jpg",
+  },
+  {
+    title: "Safe Environment",
+    desc: "Our space is fully child-proofed, sanitized daily, and loaded with soft support mats.",
+    icon: Shield,
+    iconColor: "pink",
+    img: null,
+  },
+  {
+    title: "Fun Sessions",
+    desc: "We blend movement, music, games, and storytelling for maximum child engagement.",
+    icon: Sparkles,
+    iconColor: "blue",
+    img: "/images/why-fun-sessions.png",
+  }
+];
+
+const BENEFIT_CARDS = [
+  {
+    num: "01",
+    title: "Physical Strength",
+    desc: "Builds muscle strength, increases flexibility, and improves overall body balance and posture.",
+    img: "/images/benefit-physical-strength.jpg"
+  },
+  {
+    num: "02",
+    title: "Mindfulness & Focus",
+    desc: "Teaches children how to concentrate, clear their minds, and focus on details and lessons."
+  },
+  {
+    num: "03",
+    title: "Emotional Balance",
+    desc: "Helps kids manage stress, emotional anxiety, big mood swings, and developmental shifts."
+  },
+  {
+    num: "04",
+    title: "Social Skills",
+    desc: "Promotes partner poses, healthy play coordination, and positive peer-to-peer relationships."
+  },
+  {
+    num: "05",
+    title: "Focus & Attention",
+    desc: "Sharpens academic learning skills and cognitive abilities through sensory motor alignment."
+  },
+  {
+    num: "06",
+    title: "Self-Regulation",
+    desc: "Equips children with breath control tools to self-soothe when overwhelmed or hyperactive."
+  }
+];
+
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [
-    "https://images.unsplash.com/photo-1616699002805-0a21fc929981?w=800&q=80",
-    "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80",
-    "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800&q=80"
+  const heroMedia = [
+    { type: "video", src: "/images/promo-studio.mp4", alt: "Happy Fit Club Studio Promo" },
+    { type: "video", src: "/images/promo-hook.mp4", alt: "From Screen Time to Yoga movement" },
+    { type: "image", src: "/images/kids-yoga-1.png", alt: "Kids yoga class session" },
+    { type: "image", src: "/images/kids-yoga-2.png", alt: "Teen yoga exercises" }
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      setCurrentImageIndex((prev) => (prev + 1) % heroMedia.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroMedia.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -144,8 +205,8 @@ export default function HomePage() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="hero-circle-bg">
-              <div className="hero-image-container" style={{ position: "relative" }}>
+            <div className="hero-box-bg">
+              <div className="hero-image-container">
                 <AnimatePresence>
                   <motion.div
                     key={currentImageIndex}
@@ -155,14 +216,26 @@ export default function HomePage() {
                     transition={{ duration: 0.8 }}
                     style={{ position: "absolute", width: "100%", height: "100%" }}
                   >
-                    <Image
-                      src={heroImages[currentImageIndex]}
-                      alt="Happy Fit Club Hero Slider"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                      priority
-                    />
+                    {heroMedia[currentImageIndex].type === "video" ? (
+                      <video
+                        src={heroMedia[currentImageIndex].src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="object-cover"
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    ) : (
+                      <Image
+                        src={heroMedia[currentImageIndex].src}
+                        alt={heroMedia[currentImageIndex].alt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        priority
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -179,58 +252,52 @@ export default function HomePage() {
             We focus on play-based learning and self-expression to make mindfulness exciting and accessible.
           </p>
 
-          <motion.div
-            className="grid grid-4 mobile-slider"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <motion.div className="card why-card" variants={itemVariants}>
-              <div className="why-icon-container why-icon-pink">
-                <Award size={24} />
-              </div>
-              <h3 className="why-card-title">Certified Instructors</h3>
-              <p className="why-card-desc">
-                Our instructors are certified in kids yoga & child-focused mindfulness practices.
-              </p>
-            </motion.div>
+          <div className="marquee-container">
+            <div className="marquee-track">
+              {/* Original set */}
+              {WHY_CARDS.map((card, i) => {
+                const Icon = card.icon;
+                return (
+                  <motion.div key={`why-${i}`} className="card why-card" variants={itemVariants}>
+                    {card.img && (
+                      <div style={{ position: "relative", width: "100%", height: "130px", marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
+                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <div className={`why-icon-container why-icon-${card.iconColor}`}>
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="why-card-title">{card.title}</h3>
+                    <p className="why-card-desc">{card.desc}</p>
+                  </motion.div>
+                );
+              })}
 
-            <motion.div className="card why-card" variants={itemVariants}>
-              <div className="why-icon-container why-icon-blue">
-                <Smile size={24} />
-              </div>
-              <h3 className="why-card-title">Child-Centric Approach</h3>
-              <p className="why-card-desc">
-                We focus on play-based learning, stories, and healthy self-expression.
-              </p>
-            </motion.div>
-
-            <motion.div className="card why-card" variants={itemVariants}>
-              <div className="why-icon-container why-icon-pink">
-                <Shield size={24} />
-              </div>
-              <h3 className="why-card-title">Safe Environment</h3>
-              <p className="why-card-desc">
-                Our space is fully child-proofed, sanitized daily, and loaded with soft support mats.
-              </p>
-            </motion.div>
-
-            <motion.div className="card why-card" variants={itemVariants}>
-              <div className="why-icon-container why-icon-blue">
-                <Sparkles size={24} />
-              </div>
-              <h3 className="why-card-title">Fun Sessions</h3>
-              <p className="why-card-desc">
-                We blend movement, music, games, and storytelling for maximum child engagement.
-              </p>
-            </motion.div>
-          </motion.div>
+              {/* Duplicated set for seamless loop */}
+              {WHY_CARDS.map((card, i) => {
+                const Icon = card.icon;
+                return (
+                  <div key={`why-dup-${i}`} className="card why-card">
+                    {card.img && (
+                      <div style={{ position: "relative", width: "100%", height: "130px", marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
+                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <div className={`why-icon-container why-icon-${card.iconColor}`}>
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="why-card-title">{card.title}</h3>
+                    <p className="why-card-desc">{card.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 3. OUR MISSION / VALUE PREPOSITION */}
-      <section className="section">
+      <section className="section mission-section">
         <div className="container mission-grid">
           <motion.div
             className="mission-image-wrapper"
@@ -411,53 +478,39 @@ export default function HomePage() {
             Yoga and mindfulness practices benefit children in their physical, emotional, and social lives.
           </p>
 
-          <div className="grid grid-3 mobile-slider">
-            <div className="card benefit-card">
-              <span className="benefit-num">01</span>
-              <div>
-                <h3 className="benefit-title">Physical Strength</h3>
-                <p className="benefit-desc">Builds muscle strength, increases flexibility, and improves overall body balance and posture.</p>
-              </div>
-            </div>
+          <div className="marquee-container">
+            <div className="marquee-track marquee-track-reverse">
+              {/* Original 6 Cards */}
+              {BENEFIT_CARDS.map((card, i) => (
+                <div key={`benefit-${i}`} className="card benefit-card">
+                  <span className="benefit-num">{card.num}</span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}>
+                    {card.img && (
+                      <div style={{ position: "relative", width: "100%", height: "120px", borderRadius: "12px", overflow: "hidden", marginBottom: "8px" }}>
+                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <h3 className="benefit-title">{card.title}</h3>
+                    <p className="benefit-desc">{card.desc}</p>
+                  </div>
+                </div>
+              ))}
 
-            <div className="card benefit-card">
-              <span className="benefit-num">02</span>
-              <div>
-                <h3 className="benefit-title">Mindfulness & Focus</h3>
-                <p className="benefit-desc">Teaches children how to concentrate, clear their minds, and focus on details and lessons.</p>
-              </div>
-            </div>
-
-            <div className="card benefit-card">
-              <span className="benefit-num">03</span>
-              <div>
-                <h3 className="benefit-title">Emotional Balance</h3>
-                <p className="benefit-desc">Helps kids manage stress, emotional anxiety, big mood swings, and developmental shifts.</p>
-              </div>
-            </div>
-
-            <div className="card benefit-card">
-              <span className="benefit-num">04</span>
-              <div>
-                <h3 className="benefit-title">Social Skills</h3>
-                <p className="benefit-desc">Promotes partner poses, healthy play coordination, and positive peer-to-peer relationships.</p>
-              </div>
-            </div>
-
-            <div className="card benefit-card">
-              <span className="benefit-num">05</span>
-              <div>
-                <h3 className="benefit-title">Focus & Attention</h3>
-                <p className="benefit-desc">Sharpens academic learning skills and cognitive abilities through sensory motor alignment.</p>
-              </div>
-            </div>
-
-            <div className="card benefit-card">
-              <span className="benefit-num">06</span>
-              <div>
-                <h3 className="benefit-title">Self-Regulation</h3>
-                <p className="benefit-desc">Equips children with breath control tools to self-soothe when overwhelmed or hyperactive.</p>
-              </div>
+              {/* Duplicated 6 Cards for Seamless Scrolling */}
+              {BENEFIT_CARDS.map((card, i) => (
+                <div key={`benefit-dup-${i}`} className="card benefit-card">
+                  <span className="benefit-num">{card.num}</span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}>
+                    {card.img && (
+                      <div style={{ position: "relative", width: "100%", height: "120px", borderRadius: "12px", overflow: "hidden", marginBottom: "8px" }}>
+                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                      </div>
+                    )}
+                    <h3 className="benefit-title">{card.title}</h3>
+                    <p className="benefit-desc">{card.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -467,7 +520,7 @@ export default function HomePage() {
       <section className="section" style={{ backgroundColor: "rgba(30, 90, 219, 0.02)", borderTop: "1px solid var(--border-color)" }}>
         <div className="container">
           <h2 className="section-title">Word of Our Community</h2>
-          <p className="section-subtitle">What parents say about their kids' transformation at Happy Fit Club.</p>
+          <p className="section-subtitle">What parents say about their kids&apos; transformation at Happy Fit Club.</p>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
             <a
               href="https://www.google.com/maps/search/?api=1&query=Happy+Fit+Club+Seetharampalya+Bengaluru"

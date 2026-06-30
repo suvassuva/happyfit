@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Check, Calendar, Clock, Smile, Sparkles, Compass, MapPin, ArrowRight } from "lucide-react";
 import Accordion from "@/components/Accordion";
 
 const PROGRAMS = [
@@ -138,7 +137,7 @@ export default function ProgramsPage() {
       <section className="section" style={{ paddingBottom: "120px" }}>
         <div className="container">
           <h2 className="section-title">Frequently Asked Questions</h2>
-          <p className="section-subtitle">Everything you need to know about preparing for your child's first yoga class.</p>
+          <p className="section-subtitle">Everything you need to know about preparing for your child&apos;s first yoga class.</p>
           <Accordion items={FAQS} />
         </div>
       </section>
