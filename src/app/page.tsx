@@ -260,7 +260,7 @@ export default function HomePage() {
                   <motion.div key={`why-${i}`} className="card why-card" variants={itemVariants}>
                     {card.img && (
                       <div style={{ position: "relative", width: "100%", height: "130px", marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
-                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                        <Image src={card.img} alt={card.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 30vw" />
                       </div>
                     )}
                     <h3 className="why-card-title">{card.title}</h3>
@@ -275,7 +275,7 @@ export default function HomePage() {
                   <div key={`why-dup-${i}`} className="card why-card">
                     {card.img && (
                       <div style={{ position: "relative", width: "100%", height: "130px", marginBottom: "16px", borderRadius: "12px", overflow: "hidden" }}>
-                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                        <Image src={card.img} alt={card.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 30vw" />
                       </div>
                     )}
                     <h3 className="why-card-title">{card.title}</h3>
@@ -479,7 +479,7 @@ export default function HomePage() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}>
                     {card.img && (
                       <div style={{ position: "relative", width: "100%", height: "120px", borderRadius: "12px", overflow: "hidden", marginBottom: "8px" }}>
-                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                        <Image src={card.img} alt={card.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 30vw" />
                       </div>
                     )}
                     <h3 className="benefit-title">{card.title}</h3>
@@ -495,7 +495,7 @@ export default function HomePage() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}>
                     {card.img && (
                       <div style={{ position: "relative", width: "100%", height: "120px", borderRadius: "12px", overflow: "hidden", marginBottom: "8px" }}>
-                        <Image src={card.img} alt={card.title} fill className="object-cover" />
+                        <Image src={card.img} alt={card.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 30vw" />
                       </div>
                     )}
                     <h3 className="benefit-title">{card.title}</h3>

@@ -205,12 +205,19 @@ export default function GalleryPage() {
                     {item.type === "video" ? (
                       <video
                         src={item.src}
-                        autoPlay
+                        preload="metadata"
                         loop
                         muted
                         playsInline
                         className="object-cover"
                         style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.play().catch(() => {});
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.pause();
+                          e.currentTarget.currentTime = 0;
+                        }}
                       />
                     ) : (
                       <Image
