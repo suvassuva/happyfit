@@ -1,49 +1,42 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Award, Heart, Shield, Star, Users, Sparkles } from "lucide-react";
+import { Shield, Star } from "lucide-react";
 
 const TEAM_MEMBERS = [
   {
-    name: "Sarah Jenkins",
-    role: "Founder & Lead Kids Instructor",
-    bio: "A certified kids yoga specialist with 8+ years of teaching experience. Sarah blends storytelling, music, and yoga postures to make wellness an exciting and magical adventure for toddlers and school-age children.",
+    name: "Kalli Gunjan",
+    role: "Initiator of Happy Fit Club",
+    bio: "Initiator of Happy Fit Club. I am a mother and a banker turned yoga & fitness trainer working with adults & children for over 7 years now. Certified in Yoga, Pilates and personal training and founder of Happy Fit Club. With a background in yoga and creative wellness practices, I design engaging programs that help kids build flexibility, strength, focus and emotional resilience. Through playful yoga, breathwork and movement based sessions, I support children of all abilities - including children with diverse needs - to feel confident, calm and connected. My goal is to make wellness fun, accessible and part of everyday life for families.",
     avatarBg: "var(--accent-pink-light)",
-    badges: ["RYT-200", "Kids Yoga Cert", "8+ Yrs Exp"],
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="35" r="18" fill="var(--accent-pink)"/>
-        <path d="M15 80C15 65 30 55 50 55C70 55 85 65 85 80V90H15V80Z" fill="var(--accent-pink)" fillOpacity="0.4"/>
-      </svg>
-    )
+    badges: ["Yoga Cert", "Pilates Cert", "Personal Trainer", "7+ Yrs Exp"],
+    img: "/images/kalli-gunjan.jpg",
   },
   {
-    name: "Dr. Marcus Vance",
-    role: "Pediatric Physical Therapist & Advisor",
-    bio: "Marcus has spent a decade in pediatric ergonomics. He advises on postural alignment and structural safety, ensuring that all our poses are supportive, strengthening, and safe for growing bones and joints.",
+    name: "Dillippa Hallemani",
+    role: "Senior Kids Fitness Coach",
+    bio: "Certified fitness and strength trainer with 6+ years of experience helping children develop coordination, physical endurance, and active lifestyles. Dillippa believes in making workouts interactive, energetic, and highly engaging for kids of all levels.",
     avatarBg: "var(--accent-blue-light)",
-    badges: ["DPT", "Pediatric Specialist", "Clinical Advisor"],
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="35" r="18" fill="var(--accent-blue)"/>
-        <path d="M15 80C15 65 30 55 50 55C70 55 85 65 85 80V90H15V80Z" fill="var(--accent-blue)" fillOpacity="0.4"/>
-      </svg>
-    )
+    badges: ["Fitness Coach", "Strength Trainer", "6+ Yrs Exp"],
+    img: "/images/dillippa-hallemani.jpg",
   },
   {
-    name: "Emily Chen",
-    role: "Mindfulness & Sensory Coach",
-    bio: "Holding a master's degree in child psychology, Emily specializes in sensory regulation. She develops play-based activities and deep breathing exercises that help kids recognize and manage big emotions.",
+    name: "Sreya Bhar",
+    role: "Lead Kids Mindfulness Coach",
+    bio: "Passionate educator specializing in kids yoga, storytelling, and emotional regulation. Sreya designs playful, creative sessions that encourage children to express themselves, build focus, and learn healthy breathing habits.",
     avatarBg: "var(--accent-pink-light)",
-    badges: ["MS Child Psych", "Mindfulness Coach", "Sensory Specialist"],
-    svg: (
-      <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="35" r="18" fill="var(--accent-pink)"/>
-        <path d="M15 80C15 65 30 55 50 55C70 55 85 65 85 80V90H15V80Z" fill="var(--accent-blue)" fillOpacity="0.3"/>
-      </svg>
-    )
+    badges: ["Mindfulness Coach", "Yoga Educator", "Creative Play"],
+    img: "/images/sreya-bhar.jpg",
+  },
+  {
+    name: "Vidhi Bansal",
+    role: "Kids Yoga Instructor",
+    bio: "Certified children's yoga instructor and movement specialist. Vidhi uses games, music, and mindfulness routines to help kids build body awareness, self-confidence, and a lifelong love for health and wellness.",
+    avatarBg: "var(--accent-blue-light)",
+    badges: ["Kids Yoga Cert", "Movement Specialist", "Pediatric Wellness"],
+    img: "/images/vidhi-bansal.jpg",
   }
 ];
 
@@ -68,6 +61,7 @@ export default function TeamPage() {
               <motion.div
                 key={member.name}
                 className="card team-card"
+                style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -80,14 +74,28 @@ export default function TeamPage() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    height: "140px",
+                    width: "140px",
+                    borderRadius: "50%",
+                    margin: "0 auto 20px auto",
+                    border: "4px solid white",
+                    boxShadow: "var(--card-shadow)",
                   }}
                 >
-                  {member.svg}
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 30vw"
+                  />
                 </div>
                 <span className="team-role">{member.role}</span>
                 <h3 className="team-name">{member.name}</h3>
                 <p className="team-bio">{member.bio}</p>
-                <div className="team-badge-list">
+                <div className="team-badge-list" style={{ display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap", width: "100%" }}>
                   {member.badges.map((badge) => (
                     <span key={badge} className="badge badge-blue" style={{ fontSize: "0.75rem", padding: "4px 10px" }}>
                       {badge}
