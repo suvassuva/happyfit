@@ -418,7 +418,28 @@ p {
   display: none;
 }
 
-.mobile-call-btn {
+.btn-outline-support {
+  background-color: transparent;
+  border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-support:hover {
+  background-color: var(--accent-blue-light);
+  transform: translateY(-2px);
+}
+
+.mobile-care-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -427,12 +448,13 @@ p {
   border-radius: 50%;
   background-color: #10b981;
   color: white;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   transition: all 0.25s ease;
 }
 
-.mobile-call-btn:hover {
+.mobile-care-btn:hover {
   background-color: #059669;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
@@ -444,13 +466,186 @@ p {
   }
 
   .header-actions {
-    display: block;
+    display: flex;
+    gap: 12px;
+    align-items: center;
   }
 
-  .mobile-call-btn {
+  .mobile-care-btn {
     display: none;
   }
 }
+
+/* Customer Care Popover Modal */
+.customer-care-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.4); /* Slate-900 with opacity */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  animation: careFadeIn 0.25s ease-out;
+}
+
+.customer-care-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+  z-index: 10001;
+  animation: careScaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.customer-care-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 8px;
+}
+
+.customer-care-header h3 {
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.customer-care-header .close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer-care-header .close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+.customer-care-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.care-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.care-option:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.option-icon-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: transform 0.25s ease;
+}
+
+.care-option:hover .option-icon-container {
+  transform: scale(1.06);
+}
+
+.option-text {
+  text-align: left;
+}
+
+.option-text h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1px;
+  color: var(--text-primary);
+}
+
+.option-text p {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Individual Option Colors & Brand Interactions */
+.care-option.whatsapp .option-icon-container {
+  background-color: #25D366; /* WhatsApp Green */
+}
+.care-option.whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.4);
+  background-color: rgba(37, 211, 102, 0.05);
+}
+
+.care-option.call .option-icon-container {
+  background-color: #1e5adb; /* Brand Blue */
+}
+.care-option.call:hover {
+  border-color: rgba(30, 90, 219, 0.4);
+  background-color: rgba(30, 90, 219, 0.05);
+}
+
+.care-option.sms .option-icon-container {
+  background-color: #f59e0b; /* Amber */
+}
+.care-option.sms:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.care-option.email .option-icon-container {
+  background-color: var(--accent-pink); /* Pink */
+}
+.care-option.email:hover {
+  border-color: rgba(255, 92, 151, 0.4);
+  background-color: rgba(255, 92, 151, 0.05);
+}
+
+@keyframes careFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes careScaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
 
 /* Mobile Bottom Tab Navigation */
 .bottom-nav {

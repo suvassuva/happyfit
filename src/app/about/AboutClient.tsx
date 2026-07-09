@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { Heart, Sparkles, Smile, Shield, CheckCircle, ArrowRight } from "lucide-react";
+import { Sparkles, Smile, CheckCircle, ArrowRight } from "lucide-react";
 
 export default function AboutClient() {
   const containerVariants: Variants = {

@@ -12,12 +12,15 @@ export default function SplashScreen() {
     // Check if the user has already seen the splash screen in this session
     const hasSeenSplash = sessionStorage.getItem("happy_fit_splash_viewed");
     if (!hasSeenSplash) {
-      setIsVisible(true);
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, []);
 
   const playChime = () => {
-    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    const AudioContextClass = window.AudioContext || (window as Window & typeof globalThis & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
     if (!AudioContextClass) return;
 
     try {
