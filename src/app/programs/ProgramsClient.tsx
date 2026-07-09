@@ -29,7 +29,7 @@ const PROGRAMS = [
     duration: "60 Mins",
     description: "Empowering teens with physical fitness, flexibility, stress-management techniques, and a positive self-image in a supportive social environment.",
     color: "pink",
-    img: "/images/Limitless club (1).jpg"
+    img: "/images/limitless-club.jpg"
   },
   {
     title: "Special Fit",
@@ -37,7 +37,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "An inclusive, adaptive program customized to nurture motor skills, focus, and sensory coordination for children with unique learning styles.",
     color: "blue",
-    img: "/images/Special Fit.jpg"
+    img: "/images/special-fit.jpg"
   },
   {
     title: "Solo- Fit: Personalized Kids Yoga",
@@ -53,7 +53,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "A mindfulness and relaxation-centered session focused on deep breathing, self-regulation tools, and sound healing to calm active minds.",
     color: "blue",
-    img: "/images/Pause Fit.jpg"
+    img: "/images/pause-fit.jpg"
   },
   {
     title: "The Yoga Nest",
@@ -61,7 +61,7 @@ const PROGRAMS = [
     duration: "45 Mins",
     description: "Bond with your child through partner yoga, cooperative movements, and group mindfulness games designed to build trust and family connection.",
     color: "pink",
-    img: "/images/Yoga Nest.jpg"
+    img: "/images/yoga-nest.jpg"
   }
 ];
 

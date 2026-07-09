@@ -376,7 +376,7 @@ export default function HomeClient() {
             >
               <div className="program-image-container">
                 <Image
-                  src="/images/Limitless club (1).jpg"
+                  src="/images/limitless-club.jpg"
                   alt="Yoga Fit Class for Kids and Teens"
                   fill
                   className="object-cover"
