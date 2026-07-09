@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import BottomNav from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
 
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -126,6 +127,9 @@ export default function RootLayout({
 
         {/* Mobile Navigation Sticky Tab Bar */}
         <BottomNav />
+
+        {/* Global WhatsApp Chat Icon */}
+        <WhatsAppFloating />
       </body>
     </html>
   );
