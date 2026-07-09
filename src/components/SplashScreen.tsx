@@ -190,10 +190,7 @@ export default function SplashScreen() {
                 <Play size={18} fill="white" />
               </button>
             </motion.div>
-            
-            <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", opacity: 0.8, marginTop: "8px" }}>
-              🎵 Enable sound for a magic startup experience
-            </span>
+
           </div>
         </motion.div>
       )}
